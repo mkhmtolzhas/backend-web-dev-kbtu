@@ -9,10 +9,13 @@ class LLMView(APIView):
         serializer = LLMRequestSerializer(data=request.data)
         if serializer.is_valid():
             prompt = serializer.validated_data['prompt']
+            file_url = serializer.validated_data.get('file_url')
 
-            response_text = llm_use_case.generate_response(prompt)
+            if file_url:
+                response_text = llm_use_case.generate_response_from_file(prompt, file_url)
+            else:
+                response_text = llm_use_case.generate_response(prompt)
 
             return Response({"response": response_text}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
