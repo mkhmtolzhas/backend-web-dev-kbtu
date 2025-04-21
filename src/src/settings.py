@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'storages',
 
 
     'api',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'llm',
     'chat',
     'message',
+    's3',
 ]
 
 MIDDLEWARE = [

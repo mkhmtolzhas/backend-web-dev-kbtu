@@ -3,6 +3,7 @@ from register.views import RegisterView
 from llm.views import LLMView
 from chat.views import ChatViewSet
 from message.views import MessageViewSet
+from s3.views import FileViewSet
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -15,6 +16,7 @@ router = DefaultRouter()
 
 router.register(r'chat', ChatViewSet, basename='chat')
 router.register(r'message', MessageViewSet, basename='message')
+router.register(r'file', FileViewSet, basename='file')
 
 
 urlpatterns = [
