@@ -9,6 +9,7 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     chat = models.ForeignKey('chat.Chat', on_delete=models.CASCADE, related_name='messages')
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='messages')
+    file = models.ForeignKey('s3.File', on_delete=models.SET_NULL, null=True, blank=True, related_name='messages')
 
     def __str__(self):
         return f"Message {self.id} in {self.chat.title}"
