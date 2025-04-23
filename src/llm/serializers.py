@@ -4,6 +4,7 @@ import re
 
 class LLMRequestSerializer(serializers.Serializer):
     prompt = serializers.CharField(max_length=1000, required=True)
+    chat_id = serializers.IntegerField(required=True)
     file_url = serializers.CharField(required=False, allow_null=True, allow_blank=True)
 
     def validate_file_url(self, value):
